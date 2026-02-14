@@ -33,6 +33,12 @@
       --font-body: 'Source Sans 3', sans-serif;
       --section-padding: 100px 0;
       --container-width: 1200px;
+      /* Comparison table variables */
+      --green: #2D6A4F;
+      --charcoal: #2D2D2D;
+      --gray: #666;
+      --lc-white: #FAFAF8;
+      --font-mono: 'Courier New', monospace;
     }
 
     html {
@@ -487,7 +493,7 @@
     }
 
     .efficiency::before {
-      content: '20%';
+      content: '40%';
       font-family: var(--font-heading);
       font-size: clamp(12rem, 25vw, 22rem);
       font-weight: 700;
@@ -1190,6 +1196,187 @@
         max-width: 1320px;
       }
     }
+
+    /* ========== COMPARISON SECTION ========== */
+    .comparison {
+      background: var(--lc-white);
+      padding: var(--section-padding) 0;
+    }
+
+    .comparison .section-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(45,106,79,0.1);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .comparison .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .comparison .section-header p {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .comparison .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
+      border: 1px solid #E5E5E5;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .comparison table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .comparison thead th {
+      background: var(--charcoal);
+      color: #fff;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 18px 16px;
+      text-align: center;
+      border-bottom: 2px solid var(--charcoal);
+      vertical-align: bottom;
+    }
+
+    .comparison thead th:first-child {
+      text-align: left;
+      background: #2D2D2D;
+      min-width: 180px;
+      border-radius: 12px 0 0 0;
+    }
+
+    .comparison thead th:last-child {
+      border-radius: 0 12px 0 0;
+    }
+
+    .comparison thead th.lc1-col {
+      background: var(--green);
+    }
+
+    .comparison thead th.lc1-col::before {
+      content: '★ OUR PRODUCT';
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
+
+    .comparison .product-name {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .comparison .product-brand {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    .comparison tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #E5E5E5;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .comparison tbody td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: #2D2D2D;
+      background: var(--lc-white);
+      font-size: 13px;
+    }
+
+    .comparison tbody td.lc1-cell {
+      background: rgba(45,106,79,0.08);
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .comparison tbody tr:nth-child(even) td {
+      background: rgba(0,0,0,0.015);
+    }
+    .comparison tbody tr:nth-child(even) td:first-child {
+      background: #EFEFEC;
+    }
+    .comparison tbody tr:nth-child(even) td.lc1-cell {
+      background: rgba(45,106,79,0.12);
+    }
+
+    .comparison tbody tr.category-row td {
+      background: #E5E5E5 !important;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      padding: 10px 16px;
+      font-weight: 700;
+    }
+
+    .comparison .check {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .comparison .cross {
+      color: #C1473B;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .comparison .dash {
+      color: #999;
+    }
+
+    .comparison .table-footer {
+      padding: 16px 20px;
+      font-size: 12px;
+      color: #999;
+      border-top: 1px solid #E5E5E5;
+      line-height: 1.6;
+    }
+
+    .comparison .table-footer strong {
+      color: #555;
+    }
+
+    .comparison .disclaimer {
+      max-width: 1200px;
+      margin: 24px auto 0;
+      font-size: 12px;
+      color: #999;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .comparison .section-header { margin-bottom: 32px; }
+      .comparison thead th, .comparison tbody td { padding: 12px 10px; font-size: 12px; }
+    }
   </style>
   <!-- Google Model Viewer for 3D GLB embed -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
@@ -1210,6 +1397,7 @@
         <li><a href="#features">Features</a></li>
         <li><a href="#efficiency">Performance</a></li>
         <li><a href="#specs">Specs</a></li>
+        <li><a href="#comparison">Compare</a></li>
         <li><a href="#distributors" class="nav-cta">Pre-Order Now</a></li>
       </ul>
     </div>
@@ -1220,8 +1408,9 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">Shipping Q2 2026 &mdash; Pre-Order Now</div>
+        <div class="hero-badge" style="margin-left: 12px; border-color: rgba(232, 93, 4, 0.5); color: var(--color-accent);">U.S. Patent Pending</div>
         <h1>Scoop. Roll. <span class="accent">Done.</span></h1>
-        <p class="hero-sub">The LC-1 is a wheeled scoop bin&mdash;a single tool that scoops debris off the ground and rolls it to the truck. After two decades of running professional landscaping crews, Brent Campagnolo designed the bin he wished had always existed. Shipping to distributors Q2 2026.</p>
+        <p class="hero-sub">The LC-1 is a wheeled scoop bin&mdash;a single tool that scoops debris off the ground and rolls it to the truck, green waste bin, or tarp. After two decades of running professional landscaping crews, Brent Campagnolo designed the bin he wished had always existed. Shipping to distributors Q2 2026.</p>
         <div class="hero-cta-group">
           <a href="#distributors" class="btn btn-primary">Reserve Wholesale Pricing</a>
           <a href="#features" class="btn btn-secondary">Explore Features</a>
@@ -1273,15 +1462,15 @@
           <span class="section-label">The Origin Story</span>
           <h2 class="section-title">Twenty Years in the Making</h2>
           <div class="divider"></div>
-          <p>For over twenty years, Brent Campagnolo watched the same scene play out on job sites across Santa Cruz County. Crews would rake leaves and debris into piles, then bend down to scoop them into buckets, tarps, or worn-out bins. They'd carry heavy loads to a truck or larger container, dump them, and walk back to do it all again.</p>
+          <p>For over twenty years, Brent Campagnolo watched the same scene play out on job sites across Santa Cruz County. Crews would rake leaves and debris into piles, then bend down to scoop them into buckets, tarps, or worn-out bins. They'd carry heavy loads to a truck, green waste bin, or tarp, dump them, and walk back to do it all again.</p>
           <p>Lower backs gave out. Young workers developed chronic pain. Good employees left the industry. And traditional bins? They wore through their bottoms in months from being dragged across driveways and gravel.</p>
           <p>The solution came from a simple observation: <strong>what if the wheels were on the scoop side?</strong> One tool that scoops debris off the ground and rolls it wherever it needs to go.</p>
-          <p>By placing wheels on the scoop side, the bin bottom is protected during scooping, the interior volume is maximized, and full loads roll effortlessly to the truck. It sounds obvious now. It took twenty years of watching, thinking, and iterating to get here&mdash;and the LC-1 is now heading into production, shipping Q2 2026.</p>
+          <p>By placing wheels on the scoop side, the bin bottom is protected during scooping, the interior volume is maximized, and full loads roll effortlessly to the truck, green waste bin, or tarp. It sounds obvious now. It took twenty years of watching, thinking, and iterating to get here&mdash;and the LC-1 is now heading into production, shipping Q2 2026.</p>
         </div>
         <div>
           <div class="story-highlight">
             <blockquote>
-              A scoop bin that rolls. Put the wheels on the scoop side, and you get a tool that scoops debris off the ground, protects itself while doing it, and wheels full loads to the truck without carrying a thing.
+              A scoop bin that rolls. Put the wheels on the scoop side, and you get a tool that scoops debris off the ground, protects itself while doing it, and wheels full loads to the truck, green waste bin, or tarp without carrying a thing.
             </blockquote>
             <cite>&mdash; Brent Campagnolo, Inventor &amp; Founder</cite>
           </div>
@@ -1322,7 +1511,7 @@
             <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
           </div>
           <h3>Scoop &amp; Roll in One</h3>
-          <p>The LC-1 scoops debris directly off the ground, then rolls it to the truck&mdash;no separate bucket, tarp, or wheelbarrow needed. And because the wheels sit on the scoop side, the full interior volume is available for every load.</p>
+          <p>The LC-1 scoops debris directly off the ground, then rolls it to the truck, green waste bin, or tarp&mdash;no separate bucket or wheelbarrow needed. Because the wheels sit on the scoop side and the bin is rectangular, the full interior volume is available for every load&mdash;approximately 170% of the effective capacity of competing scoop bins.</p>
         </div>
         <!-- Any Terrain -->
         <div class="feature-card">
@@ -1330,7 +1519,7 @@
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
           </div>
           <h3>Any Terrain</h3>
-          <p>8-inch wheels with 4 inches of ground clearance are designed to roll smoothly across grass, gravel, mulch, wood chips, and pavement. No terrain is off-limits.</p>
+          <p>8-inch wheels with 4 inches of ground clearance are designed to roll smoothly across grass, gravel, mulch, wood chips, and pavement. No terrain is off-limits&mdash;you can even pull it up a retaining wall up to 3&rsquo; tall.</p>
         </div>
       </div>
     </div>
@@ -1345,16 +1534,18 @@
           <h2 class="section-title">Work Smarter. Finish Faster. Go Home Healthy.</h2>
           <div class="divider"></div>
           <div class="stat-block">
-            <span class="stat-number">~20%</span>
+            <span class="stat-number">~40%</span>
             <span class="stat-label">Estimated faster debris collection</span>
           </div>
-          <p style="color: rgba(245,243,239,0.7); margin-bottom: 8px;">Based on prototype testing and engineering estimates, the LC-1 is projected to improve debris collection times by approximately 20%&mdash;with even greater gains expected on large properties and challenging terrain.</p>
+          <p style="color: rgba(245,243,239,0.7); margin-bottom: 8px;">Based on prototype testing and engineering estimates, the LC-1 is projected to improve debris collection times by approximately 40%&mdash;with even greater gains expected on large properties and challenging terrain.</p>
           <ul class="efficiency-points">
-            <li>Designed to reduce trips between debris piles and trucks</li>
+            <li>Designed to reduce trips between debris piles and trucks, green waste bins, or tarps</li>
             <li>Eliminates awkward scooping into buckets or tarps</li>
             <li>Wheels designed to move heavier loads per trip</li>
             <li>Engineered for less repetitive bending and lifting</li>
-            <li>Estimated to help complete more jobs per day</li>
+            <li>Use fewer crew members for the same daily workload, due to the reduced effort per load</li>
+            <li>Increase your return on labor by 40%</li>
+            <li>Estimated to help crews complete 1-3 incremental medium-sized jobs per day</li>
           </ul>
         </div>
         <div>
@@ -1391,11 +1582,11 @@
           <tbody>
             <tr>
               <td class="spec-name">Dimensions</td>
-              <td class="spec-value">728mm &times; 666mm &times; 889mm (29" &times; 26" &times; 35")</td>
+              <td class="spec-value">~20" &times; 22" &times; 35" (tapering)</td>
             </tr>
             <tr>
-              <td class="spec-name">Weight (Bin Only)</td>
-              <td class="spec-value">6.885 kg (~15 lbs)</td>
+              <td class="spec-name">Capacity</td>
+              <td class="spec-value">~50 gallons</td>
             </tr>
             <tr>
               <td class="spec-name">Wheel Assembly</td>
@@ -1410,16 +1601,8 @@
               <td class="spec-value">Yes &mdash; +201mm per additional unit</td>
             </tr>
             <tr>
-              <td class="spec-name">Ground Clearance</td>
-              <td class="spec-value">4 inches (102mm)</td>
-            </tr>
-            <tr>
               <td class="spec-name">Handle Grip</td>
               <td class="spec-value">5/8" width, 2mm radius &mdash; reinforced</td>
-            </tr>
-            <tr>
-              <td class="spec-name">Mold Life</td>
-              <td class="spec-value">200,000+ cycles</td>
             </tr>
             <tr>
               <td class="spec-name">Storage (Stacked)</td>
@@ -1429,6 +1612,118 @@
         </table>
       </div>
       <p class="specs-note">All dimensions are nominal and based on final production design. Specifications subject to minor changes before production.</p>
+    </div>
+  </section>
+
+  <!-- ========== COMPARISON SECTION ========== -->
+  <section class="comparison" id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Compare</span>
+        <h2 class="section-title">How the LC-1 Compares</h2>
+        <div class="divider centered"></div>
+        <p>Key specs that matter on the job site.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th class="lc1-col">
+                <span class="product-name">LC-1 Roller Bin</span>
+                <span class="product-brand">Landscape Can</span>
+              </th>
+              <th>
+                <span class="product-name">Catchy Can 30 Gal</span>
+                <span class="product-brand">Catchy Inc.</span>
+              </th>
+              <th>
+                <span class="product-name">Catchy Can 20 Gal</span>
+                <span class="product-brand">Catchy Inc.</span>
+              </th>
+              <th>
+                <span class="product-name">Roughneck 45 Gal</span>
+                <span class="product-brand">Rubbermaid</span>
+              </th>
+              <th>
+                <span class="product-name">BRUTE Rollout 50 Gal</span>
+                <span class="product-brand">Rubbermaid Commercial</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Type</td>
+              <td class="lc1-cell">Wheeled scoop bin</td>
+              <td>Scoop bin</td>
+              <td>Scoop bin</td>
+              <td>Trash can</td>
+              <td>Trash can</td>
+            </tr>
+            <tr>
+              <td>Capacity</td>
+              <td class="lc1-cell">~50 gal</td>
+              <td>30 gal</td>
+              <td>20 gal</td>
+              <td>45 gal</td>
+              <td>50 gal</td>
+            </tr>
+            <tr>
+              <td>Wheels</td>
+              <td class="lc1-cell"><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Open Scoop Front</td>
+              <td class="lc1-cell"><span class="check">✓</span></td>
+              <td>Flat lip</td>
+              <td>Flat lip</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Roll While Scooping</td>
+              <td class="lc1-cell"><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Tip-and-Pour Dump</td>
+              <td class="lc1-cell"><span class="check">✓</span></td>
+              <td>Lift &amp; dump</td>
+              <td>Lift &amp; dump</td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Built for Landscaping</td>
+              <td class="lc1-cell"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Approx. Retail Price</td>
+              <td class="lc1-cell">~$90–$110</td>
+              <td>~$77–$115</td>
+              <td>~$50</td>
+              <td>~$46</td>
+              <td>~$79</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="table-footer">
+          Prices are approximate retail as of early 2026 and vary by retailer. All product names are property of their respective owners and used for comparison only. Landscape Can is not affiliated with Catchy Inc. or Rubbermaid.
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1580,14 +1875,15 @@
       { role: 'system', content: `You are a helpful product assistant for Landscape Can, LLC. You answer questions about the LC-1 wheeled scoop bin.
 
 Key facts:
-- The LC-1 is a wheeled scoop bin — it scoops debris off the ground and rolls it to the truck in one tool.
+- The LC-1 is a wheeled scoop bin — it scoops debris off the ground and rolls it to the truck, green waste bin, or tarp in one tool.
 - Pre-production status, shipping Q2 2026.
 - Invented by Brent Campagnolo after 20+ years running landscaping crews in Santa Cruz, CA.
 - "Backwards wheel" innovation: wheels on the scoop side protect the bin bottom and maximize interior volume.
-- Estimated ~20% faster debris collection based on prototype testing.
+- Estimated ~40% faster debris collection based on prototype testing.
 - Designed to reduce lower back injuries — the #1 cause of missed work in landscaping.
 - Material: HDPE (DMDA-8008H), 3X axle reinforcement, 200,000+ cycle mold life.
-- Dimensions: 728mm × 666mm × 889mm (~29" × 26" × 35"), ~15 lbs bin only.
+- Capacity: ~50 gallons. Approximately 170% of the effective capacity of competing scoop bins thanks to rectangular shape and wheel placement.
+- Dimensions: ~20" × 22" × 35" (tapering).
 - 8" wheels, 4" ground clearance, stackable (+201mm per unit, 9 units per stack).
 - B2B product targeting distributors and commercial landscaping companies.
 - Patent Pending: U.S. Patent Application No. 19/307,041.
