@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LC-1 Product Comparison | Landscape Can</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lc-green: #2D6A4F;
+    --lc-green-light: #40916C;
+    --lc-green-pale: #D8F3DC;
+    --lc-green-muted: #EBF5EE;
+    --lc-dark: #1B1B1B;
+    --lc-gray-800: #2D2D2D;
+    --lc-gray-600: #555;
+    --lc-gray-400: #999;
+    --lc-gray-200: #E5E5E5;
+    --lc-gray-100: #F5F5F3;
+    --lc-white: #FAFAF8;
+    --lc-gold: #D4A843;
+    --lc-red: #C1473B;
+    --radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--lc-white);
+    color: var(--lc-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .comparison-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lc-green);
+    background: var(--lc-green-pale);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--lc-dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-header p {
+    font-size: 16px;
+    color: var(--lc-gray-600);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Table container with horizontal scroll */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius);
+    border: 1px solid var(--lc-gray-200);
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+  }
+
+  table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  /* Header row */
+  thead th {
+    background: var(--lc-dark);
+    color: #fff;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 18px 16px;
+    text-align: center;
+    border-bottom: 2px solid var(--lc-dark);
+    position: relative;
+    vertical-align: bottom;
+  }
+
+  thead th:first-child {
+    text-align: left;
+    background: var(--lc-gray-800);
+    min-width: 180px;
+    border-radius: var(--radius) 0 0 0;
+  }
+
+  thead th:last-child {
+    border-radius: 0 var(--radius) 0 0;
+  }
+
+  /* LC-1 column highlight */
+  thead th.lc1-col {
+    background: var(--lc-green);
+    position: relative;
+  }
+
+  thead th.lc1-col::before {
+    content: '★ OUR PRODUCT';
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--lc-green-pale);
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+
+  .product-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .product-brand {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  /* Body rows */
+  tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--lc-gray-200);
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--lc-gray-800);
+    background: var(--lc-gray-100);
+    font-size: 13px;
+  }
+
+  /* LC-1 column body highlight */
+  tbody td.lc1-cell {
+    background: var(--lc-green-muted);
+    font-weight: 600;
+    color: var(--lc-green);
+  }
+
+  /* Alternating row tint */
+  tbody tr:nth-child(even) td {
+    background: rgba(0,0,0,0.015);
+  }
+  tbody tr:nth-child(even) td:first-child {
+    background: #EFEFEC;
+  }
+  tbody tr:nth-child(even) td.lc1-cell {
+    background: #D8EDDF;
+  }
+
+  /* Category separator rows */
+  tbody tr.category-row td {
+    background: var(--lc-gray-200) !important;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lc-gray-600);
+    padding: 10px 16px;
+    font-weight: 700;
+  }
+
+  /* Check / X / Dash icons */
+  .check {
+    color: var(--lc-green);
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .cross {
+    color: var(--lc-red);
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .dash {
+    color: var(--lc-gray-400);
+  }
+
+  /* Footer note */
+  .table-footer {
+    padding: 16px 20px;
+    font-size: 12px;
+    color: var(--lc-gray-400);
+    border-top: 1px solid var(--lc-gray-200);
+    line-height: 1.6;
+  }
+
+  .table-footer strong {
+    color: var(--lc-gray-600);
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .comparison-section { padding: 32px 16px 56px; }
+    .section-header { margin-bottom: 32px; }
+    thead th, tbody td { padding: 12px 10px; font-size: 12px; }
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+    font-size: 12px;
+    color: var(--lc-gray-400);
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<section class="comparison-section">
+  <div class="section-header">
+    <span class="section-badge">Compare</span>
+    <h2>How the LC-1 Stacks Up</h2>
+    <p>See how the LC-1 Roller Bin compares to popular landscape cleanup tools and trash cans used by professional crews.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="lc1-col">
+            <span class="product-name">LC-1 Roller Bin</span>
+            <span class="product-brand">Landscape Can</span>
+          </th>
+          <th>
+            <span class="product-name">Catchy Can 30 Gal</span>
+            <span class="product-brand">Catchy Inc. (CC3011)</span>
+          </th>
+          <th>
+            <span class="product-name">Catchy Can 20 Gal</span>
+            <span class="product-brand">Catchy Inc. (CC3012)</span>
+          </th>
+          <th>
+            <span class="product-name">Roughneck 45 Gal</span>
+            <span class="product-brand">Rubbermaid (2136425)</span>
+          </th>
+          <th>
+            <span class="product-name">BRUTE Rollout 50 Gal</span>
+            <span class="product-brand">Rubbermaid Comm. (FG9W27)</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- CATEGORY: GENERAL -->
+        <tr class="category-row">
+          <td colspan="6">General</td>
+        </tr>
+        <tr>
+          <td>Retail Price</td>
+          <td class="lc1-cell">TBD (est. $90–$110)</td>
+          <td>~$77 (SiteOne) / ~$115 (online)</td>
+          <td>~$50 (Ace)</td>
+          <td>~$46 (Home Depot)</td>
+          <td>~$79 (Home Depot)</td>
+        </tr>
+        <tr>
+          <td>Target User</td>
+          <td class="lc1-cell">Pro landscapers</td>
+          <td>Pro landscapers</td>
+          <td>Landscapers / homeowners</td>
+          <td>Residential / general</td>
+          <td>Commercial / facilities</td>
+        </tr>
+        <tr>
+          <td>Primary Use</td>
+          <td class="lc1-cell">Scoop &amp; transport debris</td>
+          <td>Rake/sweep debris into bin</td>
+          <td>Rake/sweep debris into bin</td>
+          <td>Trash storage &amp; curbside</td>
+          <td>Waste collection &amp; rollout</td>
+        </tr>
+
+        <!-- CATEGORY: DIMENSIONS & WEIGHT -->
+        <tr class="category-row">
+          <td colspan="6">Dimensions &amp; Capacity</td>
+        </tr>
+        <tr>
+          <td>Capacity</td>
+          <td class="lc1-cell">~30+ gal (open-top scoop)</td>
+          <td>30 gal</td>
+          <td>20 gal</td>
+          <td>45 gal</td>
+          <td>50 gal</td>
+        </tr>
+        <tr>
+          <td>Dimensions (L × W × H)</td>
+          <td class="lc1-cell">28.7″ × 26.2″ × 35.0″</td>
+          <td>28″ × 22″ × 18″</td>
+          <td>27″ × 22″ × 26″</td>
+          <td>25″ × 22″ × 34.8″</td>
+          <td>29.9″ × 23.4″ × 37.1″</td>
+        </tr>
+        <tr>
+          <td>Empty Weight</td>
+          <td class="lc1-cell">~17.5 lbs (bin + wheels)</td>
+          <td>~40–50 lbs</td>
+          <td>~25–35 lbs (est.)</td>
+          <td>~10 lbs</td>
+          <td>~27 lbs</td>
+        </tr>
+
+        <!-- CATEGORY: DESIGN & FEATURES -->
+        <tr class="category-row">
+          <td colspan="6">Design &amp; Features</td>
+        </tr>
+        <tr>
+          <td>Wheels</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Dual 8″ wheels (scoop side)</td>
+          <td><span class="cross">✗</span> &nbsp;None — drag ribs only</td>
+          <td><span class="cross">✗</span> &nbsp;None — drag ribs only</td>
+          <td><span class="check">✓</span> &nbsp;Rear wheels</td>
+          <td><span class="check">✓</span> &nbsp;Heavy-duty 8″ inset wheels</td>
+        </tr>
+        <tr>
+          <td>Wheel Position</td>
+          <td class="lc1-cell">Scoop side (patented)</td>
+          <td class="dash">N/A</td>
+          <td class="dash">N/A</td>
+          <td>Rear (tilt-to-roll)</td>
+          <td>Rear (tilt-to-roll)</td>
+        </tr>
+        <tr>
+          <td>Scoop / Open Front</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Wide scoop mouth</td>
+          <td>Extended flat lip (22″)</td>
+          <td>Extended flat lip</td>
+          <td><span class="cross">✗</span> &nbsp;Closed container</td>
+          <td><span class="cross">✗</span> &nbsp;Closed container</td>
+        </tr>
+        <tr>
+          <td>Fits Inside Standard Trash Can</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Designed to nest</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td class="dash">N/A (is a trash can)</td>
+          <td class="dash">N/A (is a trash can)</td>
+        </tr>
+        <tr>
+          <td>Stackable (for storage/shipping)</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Nests 9 high</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Lid Included</td>
+          <td class="lc1-cell"><span class="cross">✗</span> &nbsp;Open-top by design</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span> &nbsp;Hinged lid</td>
+          <td><span class="check">✓</span> &nbsp;Hinged lid</td>
+        </tr>
+        <tr>
+          <td>Handles</td>
+          <td class="lc1-cell">Integrated handle (top)</td>
+          <td>Top + bottom reinforced handles</td>
+          <td>Top + bottom reinforced handles</td>
+          <td>Comfort-grip rear handle + base grip</td>
+          <td>Ergonomic rear handle + lift bar</td>
+        </tr>
+
+        <!-- CATEGORY: CONSTRUCTION -->
+        <tr class="category-row">
+          <td colspan="6">Construction</td>
+        </tr>
+        <tr>
+          <td>Primary Material</td>
+          <td class="lc1-cell">HDPE (injection molded)</td>
+          <td>Heavy-duty plastic</td>
+          <td>Heavy-duty plastic</td>
+          <td>Shatter-proof resin</td>
+          <td>Heavy-duty polyethylene</td>
+        </tr>
+        <tr>
+          <td>Axle / Rod</td>
+          <td class="lc1-cell">Galvanized steel rod + aluminum pins (3× reinforced)</td>
+          <td class="dash">N/A</td>
+          <td class="dash">N/A</td>
+          <td>Molded-in axle</td>
+          <td>Molded-in axle retainer</td>
+        </tr>
+        <tr>
+          <td>UV Protection</td>
+          <td class="lc1-cell"><span class="check">✓</span></td>
+          <td>Not specified</td>
+          <td>Not specified</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Bottom Protection</td>
+          <td class="lc1-cell">Wheels lift bin off ground</td>
+          <td>Drag ribs</td>
+          <td>Drag ribs</td>
+          <td>Molded-in wear tread</td>
+          <td>Wide base with ribbing</td>
+        </tr>
+
+        <!-- CATEGORY: PRO LANDSCAPE USE -->
+        <tr class="category-row">
+          <td colspan="6">Pro Landscape Suitability</td>
+        </tr>
+        <tr>
+          <td>Roll While Scooping Debris</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Core design feature</td>
+          <td><span class="cross">✗</span> &nbsp;Must drag or carry</td>
+          <td><span class="cross">✗</span> &nbsp;Must drag or carry</td>
+          <td><span class="cross">✗</span> &nbsp;Not a scoop</td>
+          <td><span class="cross">✗</span> &nbsp;Not a scoop</td>
+        </tr>
+        <tr>
+          <td>Quick Dump into Truck/Can</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Tip-and-pour</td>
+          <td><span class="check">✓</span> &nbsp;Lift and dump</td>
+          <td><span class="check">✓</span> &nbsp;Lift and dump</td>
+          <td><span class="cross">✗</span> &nbsp;Bag removal</td>
+          <td><span class="cross">✗</span> &nbsp;Bag removal</td>
+        </tr>
+        <tr>
+          <td>One-Person Operation</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Lightweight + wheeled</td>
+          <td>Heavy when loaded (no wheels)</td>
+          <td>Manageable but no wheels</td>
+          <td><span class="check">✓</span> &nbsp;Wheeled</td>
+          <td><span class="check">✓</span> &nbsp;Wheeled</td>
+        </tr>
+        <tr>
+          <td>Designed for Landscaping</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;Purpose-built</td>
+          <td><span class="check">✓</span> &nbsp;Purpose-built</td>
+          <td><span class="check">✓</span> &nbsp;Purpose-built</td>
+          <td><span class="cross">✗</span> &nbsp;General residential</td>
+          <td><span class="cross">✗</span> &nbsp;General commercial</td>
+        </tr>
+        <tr>
+          <td>Patented Design</td>
+          <td class="lc1-cell"><span class="check">✓</span> &nbsp;U.S. Patented</td>
+          <td>Not specified</td>
+          <td>Not specified</td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+        </tr>
+
+        <!-- CATEGORY: AVAILABILITY -->
+        <tr class="category-row">
+          <td colspan="6">Availability &amp; Distribution</td>
+        </tr>
+        <tr>
+          <td>Distribution</td>
+          <td class="lc1-cell">B2B (landscape distributors)</td>
+          <td>SiteOne, Ace, landscape dealers</td>
+          <td>SiteOne, Ace, Walmart</td>
+          <td>Home Depot, Walmart, Lowe's, etc.</td>
+          <td>Home Depot, Tractor Supply, etc.</td>
+        </tr>
+        <tr>
+          <td>Ships Direct to Consumer</td>
+          <td class="lc1-cell"><span class="cross">✗</span> &nbsp;Through dealers</td>
+          <td>Limited (pickup only at many stores)</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Warranty</td>
+          <td class="lc1-cell">TBD</td>
+          <td>Not specified</td>
+          <td>Not specified</td>
+          <td>10-year limited</td>
+          <td>1-year limited</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="table-footer">
+      <strong>Notes:</strong> Prices shown are approximate retail as of early 2026 and may vary by retailer and region. LC-1 retail price is estimated based on projected wholesale pricing. Catchy Can 30 gal dimensions from manufacturer listing (28″ × 22″ × 18″ reflects the flat-profile form factor). Catchy Can weight range (40–50 lbs) sourced from Southwest Boulder &amp; Stone listing. Rubbermaid specifications from manufacturer websites. All competitor information is sourced from publicly available product listings.
+    </div>
+  </div>
+</section>
+
+<div class="disclaimer">
+  All product names, logos, and brands are property of their respective owners. Use of these names is for identification and comparison purposes only and does not imply endorsement. Landscape Can, LLC is not affiliated with Catchy Inc., Rubbermaid, or Newell Brands.
+</div>
+
+</body>
+</html>
