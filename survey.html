@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landscape Can Survey | Encuesta — Win a $100 Gift Card</title>
+  <meta name="description" content="Take the Landscape Can LC-1 survey for a chance to win one of three $100 gift cards. Open to landscape maintenance professionals. Drawing July 4, 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-primary: #1a3a2f;
+      --color-primary-light: #24503f;
+      --color-secondary: #c4a77d;
+      --color-accent: #e85d04;
+      --color-accent-hover: #d14f00;
+      --color-dark: #1c1c1c;
+      --color-light: #f5f3ef;
+      --color-warm-gray: #e8e4dd;
+      --color-mid-gray: #6b6b6b;
+      --color-white: #ffffff;
+      --font-heading: 'Oswald', sans-serif;
+      --font-body: 'Source Sans 3', sans-serif;
+      --container-width: 960px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--color-dark);
+      background-color: var(--color-light);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+    }
+
+    h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
+
+    /* ========== NAV ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26, 58, 47, 0.97);
+      backdrop-filter: blur(8px);
+      color: var(--color-light);
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(196, 167, 125, 0.2);
+    }
+    .nav-inner {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--color-secondary); }
+    .nav-back {
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-secondary);
+    }
+    .nav-back:hover { color: var(--color-white); }
+
+    /* ========== HERO / MODEL VIEWER ========== */
+    .hero {
+      background: var(--color-primary);
+      color: var(--color-light);
+      padding: 48px 0 24px;
+    }
+    .hero-inner { text-align: center; }
+    .hero h1 { margin-bottom: 8px; }
+    .hero h1 .accent { color: var(--color-accent); }
+    .hero-sub {
+      max-width: 680px;
+      margin: 0 auto 24px;
+      color: rgba(245, 243, 239, 0.85);
+      font-size: 1.05rem;
+    }
+    .hero-sub .es { display: block; font-style: italic; color: rgba(245, 243, 239, 0.65); margin-top: 4px; font-size: 0.98rem; }
+
+    .viewer-frame {
+      max-width: 640px;
+      margin: 0 auto 12px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+    model-viewer {
+      width: 100%;
+      height: 420px;
+      background-color: #2a2a2a;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    }
+
+    /* ========== PRIZE BANNER ========== */
+    .prize-banner {
+      background: var(--color-accent);
+      color: var(--color-white);
+      padding: 24px 0;
+      text-align: center;
+    }
+    .prize-banner h2 {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      margin-bottom: 6px;
+    }
+    .prize-banner p { font-size: 1.05rem; }
+    .prize-banner .es { display: block; font-style: italic; opacity: 0.9; margin-top: 4px; font-size: 0.98rem; }
+
+    /* ========== SECTIONS ========== */
+    section.block { padding: 56px 0; }
+    section.block.alt { background: var(--color-warm-gray); }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-bottom: 8px;
+    }
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: var(--color-secondary);
+      margin: 14px 0 22px;
+    }
+    .divider.centered { margin: 14px auto 22px; }
+    .block-title { margin-bottom: 6px; }
+    .block-title-es {
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      color: var(--color-mid-gray);
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    /* ========== ADVANTAGES LIST ========== */
+    .advantages {
+      list-style: none;
+      padding: 0;
+      margin-top: 12px;
+    }
+    .advantages li {
+      padding: 16px 0 16px 38px;
+      position: relative;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .advantages li:last-child { border-bottom: none; }
+    .advantages li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      width: 22px;
+      height: 22px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e85d04' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+      background-size: 14px 14px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .advantages strong { display: block; color: var(--color-primary); font-size: 1.1rem; }
+    .advantages .es { display: block; color: var(--color-mid-gray); font-style: italic; margin-top: 4px; }
+
+    /* ========== FORM ========== */
+    .form-wrap {
+      background: var(--color-white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .eligibility-note {
+      background: #fff4e8;
+      border-left: 4px solid var(--color-accent);
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      border-radius: 4px;
+      font-size: 0.98rem;
+    }
+    .eligibility-note strong { color: var(--color-accent); }
+    .eligibility-note .es { display: block; margin-top: 6px; font-style: italic; color: var(--color-mid-gray); }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .form-group label .es {
+      display: inline-block;
+      font-family: var(--font-body);
+      text-transform: none;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--color-mid-gray);
+      margin-left: 6px;
+      font-size: 0.95rem;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"] {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cfcabf;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      background: var(--color-white);
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(26,58,47,0.08);
+    }
+
+    /* ========== LIKERT SCALE ========== */
+    .question {
+      background: var(--color-white);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .question-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 4px;
+    }
+    .question-label-es {
+      font-size: 1rem;
+      color: var(--color-mid-gray);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .likert {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .likert label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 14px 6px;
+      border: 1.5px solid #cfcabf;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.85rem;
+      line-height: 1.25;
+      background: var(--color-light);
+      transition: all 0.15s ease;
+      min-height: 96px;
+    }
+    .likert label:hover { border-color: var(--color-primary-light); background: #fff; }
+    .likert input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .likert input[type="radio"]:checked + .likert-inner {
+      color: var(--color-white);
+    }
+    .likert label:has(input:checked) {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-white);
+    }
+    .likert .num {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .likert .txt { display: block; font-weight: 600; }
+    .likert .txt-es { display: block; font-style: italic; font-weight: 400; opacity: 0.85; margin-top: 2px; font-size: 0.8rem; }
+
+    /* ========== SUBMIT ========== */
+    .form-submit { text-align: center; margin-top: 28px; }
+    .btn {
+      display: inline-block;
+      padding: 16px 44px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--color-accent);
+      color: var(--color-white);
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(232, 93, 4, 0.3);
+    }
+
+    /* ========== THANK YOU ========== */
+    .thankyou {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--color-white);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .thankyou.active { display: block; }
+    .thankyou h2 { color: var(--color-primary); margin-bottom: 8px; }
+    .thankyou .es { display: block; font-style: italic; color: var(--color-mid-gray); margin-top: 4px; }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--color-primary);
+      color: rgba(245, 243, 239, 0.8);
+      padding: 36px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .footer a { color: var(--color-secondary); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 700px) {
+      .form-row { grid-template-columns: 1fr; }
+      .likert { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+      .likert label { padding: 10px 2px; min-height: 110px; font-size: 0.72rem; }
+      .likert .num { font-size: 1.15rem; }
+      .form-wrap { padding: 24px; }
+      model-viewer { height: 320px; }
+    }
+  </style>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Landscape <span>Can</span></a>
+      <a href="/" class="nav-back">&larr; Back to Site / Volver</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <h1>Share Your <span class="accent">Opinion</span></h1>
+        <p class="hero-sub">
+          Help us build a better tool for landscape crews. Three respondents will win a $100 gift card.
+          <span class="es">Ay&uacute;danos a construir una mejor herramienta para los equipos de jardiner&iacute;a. Tres participantes ganar&aacute;n una tarjeta de regalo de $100.</span>
+        </p>
+        <div class="viewer-frame">
+          <model-viewer
+            id="lc1-viewer"
+            src="lc1-model.glb"
+            alt="LC-1 Wheeled Scoop Bin 3D Model"
+            camera-controls
+            auto-rotate
+            shadow-intensity="2"
+            shadow-softness="0.8"
+            exposure="0.7"
+            tone-mapping="neutral"
+          ></model-viewer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRIZE BANNER ========== -->
+  <section class="prize-banner">
+    <div class="container">
+      <h2>Win One of Three $100 Gift Cards</h2>
+      <p>
+        Drawing held July 4, 2026. Three winners selected at random from all eligible entries.
+        <span class="es">Gana una de tres tarjetas de regalo de $100. El sorteo se realizar&aacute; el 4 de julio de 2026. Se elegir&aacute;n tres ganadores al azar.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== ADVANTAGES ========== -->
+  <section class="block">
+    <div class="container">
+      <span class="section-label">Why the LC-1 / Por qu&eacute; el LC-1</span>
+      <h2 class="block-title">Key Advantages</h2>
+      <p class="block-title-es">Ventajas Clave</p>
+      <div class="divider"></div>
+
+      <ul class="advantages">
+        <li>
+          <strong>Scoop &amp; roll in one tool</strong>
+          Scoops debris directly off the ground, then rolls full loads to the truck or green waste bin &mdash; no more lifting and carrying.
+          <span class="es"><strong>Recoge y rueda en una sola herramienta.</strong> Recoge los desechos directamente del suelo y rueda las cargas llenas al cami&oacute;n o al contenedor &mdash; no m&aacute;s levantar y cargar.</span>
+        </li>
+        <li>
+          <strong>~2&times; productivity</strong>
+          Designed to cut down on trips and let crews move heavier loads per run.
+          <span class="es"><strong>Aproximadamente el doble de productividad.</strong> Dise&ntilde;ado para reducir los viajes y permitir a los equipos mover cargas m&aacute;s pesadas por recorrido.</span>
+        </li>
+        <li>
+          <strong>Built to protect your back</strong>
+          Angled scoop and multiple handle positions reduce the bending and lifting that cause lower-back injuries &mdash; the #1 cause of missed work in landscaping.
+          <span class="es"><strong>Dise&ntilde;ado para proteger tu espalda.</strong> La pala inclinada y las m&uacute;ltiples posiciones del mango reducen las flexiones y levantamientos que causan lesiones en la espalda baja &mdash; la causa #1 de ausencias laborales en la jardiner&iacute;a.</span>
+        </li>
+        <li>
+          <strong>~50 gallon capacity</strong>
+          Roughly 170% of the effective capacity of competing scoop bins thanks to the rectangular shape and wheel placement.
+          <span class="es"><strong>Capacidad de aproximadamente 50 galones.</strong> Alrededor del 170% de la capacidad efectiva de los botes rivales, gracias a la forma rectangular y la ubicaci&oacute;n de las ruedas.</span>
+        </li>
+        <li>
+          <strong>Any terrain</strong>
+          8-inch wheels with 4 inches of ground clearance roll smoothly across grass, gravel, mulch, and pavement.
+          <span class="es"><strong>Cualquier terreno.</strong> Ruedas de 8 pulgadas con 4 pulgadas de espacio libre que ruedan suavemente sobre c&eacute;sped, grava, mantillo y pavimento.</span>
+        </li>
+        <li>
+          <strong>Quick-change wheels</strong>
+          Pull a pin, swap the wheels for the terrain &mdash; no tools required.
+          <span class="es"><strong>Ruedas de cambio r&aacute;pido.</strong> Saca un pasador y cambia las ruedas seg&uacute;n el terreno &mdash; sin herramientas.</span>
+        </li>
+        <li>
+          <strong>Built for daily professional use</strong>
+          Industrial HDPE with 3&times; axle reinforcement; production mold rated for 200,000+ cycles.
+          <span class="es"><strong>Dise&ntilde;ado para uso profesional diario.</strong> HDPE industrial con refuerzo de eje 3&times;; molde de producci&oacute;n calificado para m&aacute;s de 200,000 ciclos.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== SURVEY FORM ========== -->
+  <section class="block alt">
+    <div class="container">
+      <span class="section-label">Your Feedback / Tus Comentarios</span>
+      <h2 class="block-title">Take the Survey</h2>
+      <p class="block-title-es">Responde la Encuesta</p>
+      <div class="divider"></div>
+
+      <div class="form-wrap" id="formWrap">
+        <div class="eligibility-note">
+          <strong>Important / Importante:</strong> This survey is open only to professionals working in the landscape maintenance field. Winners must verify their profession to receive the gift card.
+          <span class="es">Esta encuesta est&aacute; abierta solamente a profesionales que trabajan en el &aacute;rea de mantenimiento de jardines. Los ganadores deber&aacute;n verificar su profesi&oacute;n para recibir la tarjeta de regalo.</span>
+        </div>
+
+        <form name="lc1-survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="surveyForm" action="/survey-thanks">
+          <input type="hidden" name="form-name" value="lc1-survey">
+          <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name <span class="es">/ Nombre</span></label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="es">/ Correo Electr&oacute;nico</span></label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company Name <span class="es">/ Nombre de la Empresa</span></label>
+            <input type="text" id="company" name="company" placeholder="Your landscaping company" required>
+          </div>
+
+          <!-- Question 1 -->
+          <div class="question">
+            <div class="question-label">1. I would use the Landscape Can on my job sites.</div>
+            <div class="question-label-es">Usar&iacute;a el Landscape Can en mis trabajos.</div>
+            <div class="likert">
+              <label><input type="radio" name="q1_would_use" value="1" required>
+                <span class="num">1</span><span class="txt">Strongly Disagree</span><span class="txt-es">Totalmente en desacuerdo</span></label>
+              <label><input type="radio" name="q1_would_use" value="2">
+                <span class="num">2</span><span class="txt">Disagree</span><span class="txt-es">En desacuerdo</span></label>
+              <label><input type="radio" name="q1_would_use" value="3">
+                <span class="num">3</span><span class="txt">Neutral</span><span class="txt-es">Neutral</span></label>
+              <label><input type="radio" name="q1_would_use" value="4">
+                <span class="num">4</span><span class="txt">Agree</span><span class="txt-es">De acuerdo</span></label>
+              <label><input type="radio" name="q1_would_use" value="5">
+                <span class="num">5</span><span class="txt">Strongly Agree</span><span class="txt-es">Totalmente de acuerdo</span></label>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="question">
+            <div class="question-label">2. The Landscape Can would help me get more work done in less time.</div>
+            <div class="question-label-es">El Landscape Can me ayudar&iacute;a a hacer m&aacute;s trabajo en menos tiempo.</div>
+            <div class="likert">
+              <label><input type="radio" name="q2_productivity" value="1" required>
+                <span class="num">1</span><span class="txt">Strongly Disagree</span><span class="txt-es">Totalmente en desacuerdo</span></label>
+              <label><input type="radio" name="q2_productivity" value="2">
+                <span class="num">2</span><span class="txt">Disagree</span><span class="txt-es">En desacuerdo</span></label>
+              <label><input type="radio" name="q2_productivity" value="3">
+                <span class="num">3</span><span class="txt">Neutral</span><span class="txt-es">Neutral</span></label>
+              <label><input type="radio" name="q2_productivity" value="4">
+                <span class="num">4</span><span class="txt">Agree</span><span class="txt-es">De acuerdo</span></label>
+              <label><input type="radio" name="q2_productivity" value="5">
+                <span class="num">5</span><span class="txt">Strongly Agree</span><span class="txt-es">Totalmente de acuerdo</span></label>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question">
+            <div class="question-label">3. The Landscape Can is easier on my body than the bins I use now.</div>
+            <div class="question-label-es">El Landscape Can es m&aacute;s c&oacute;modo para mi cuerpo que los botes que uso ahora.</div>
+            <div class="likert">
+              <label><input type="radio" name="q3_ergonomics" value="1" required>
+                <span class="num">1</span><span class="txt">Strongly Disagree</span><span class="txt-es">Totalmente en desacuerdo</span></label>
+              <label><input type="radio" name="q3_ergonomics" value="2">
+                <span class="num">2</span><span class="txt">Disagree</span><span class="txt-es">En desacuerdo</span></label>
+              <label><input type="radio" name="q3_ergonomics" value="3">
+                <span class="num">3</span><span class="txt">Neutral</span><span class="txt-es">Neutral</span></label>
+              <label><input type="radio" name="q3_ergonomics" value="4">
+                <span class="num">4</span><span class="txt">Agree</span><span class="txt-es">De acuerdo</span></label>
+              <label><input type="radio" name="q3_ergonomics" value="5">
+                <span class="num">5</span><span class="txt">Strongly Agree</span><span class="txt-es">Totalmente de acuerdo</span></label>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Submit &amp; Enter Drawing / Enviar y Participar</button>
+          </div>
+        </form>
+
+        <div class="thankyou" id="thankYou">
+          <h2>Thank You!</h2>
+          <p>
+            Your response has been recorded. The drawing will be held on July 4, 2026, and winners will be notified by email.
+            <span class="es">&iexcl;Gracias! Tu respuesta ha sido registrada. El sorteo se realizar&aacute; el 4 de julio de 2026 y los ganadores ser&aacute;n notificados por correo electr&oacute;nico.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Landscape Can, LLC &nbsp;|&nbsp; <a href="mailto:alex@crownconsultingteam.com">alex@crownconsultingteam.com</a></p>
+      <p style="margin-top: 6px; font-size: 0.82rem; opacity: 0.75;">No purchase necessary. Survey participants must be employed in landscape maintenance to be eligible. Drawing July 4, 2026.</p>
+    </div>
+  </footer>
+
+  <!-- Hidden static form for Netlify Forms detection (required for JS-submitted forms) -->
+  <form name="lc1-survey" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <input type="text" name="company">
+    <input type="radio" name="q1_would_use" value="1">
+    <input type="radio" name="q2_productivity" value="1">
+    <input type="radio" name="q3_ergonomics" value="1">
+  </form>
+
+  <script type="module">
+    // Apply the same green color to the 3D model as the main site
+    const viewer = document.getElementById('lc1-viewer');
+    viewer.addEventListener('load', () => {
+      const model = viewer.model;
+      const wheelKeywords = ['wheel', 'tire', 'rubber', 'axle', 'hub', 'rim', 'caster'];
+      for (const material of model.materials) {
+        const name = (material.name || '').toLowerCase();
+        const isWheel = wheelKeywords.some(kw => name.includes(kw));
+        if (isWheel) {
+          material.pbrMetallicRoughness.setBaseColorFactor([0.45, 0.45, 0.45, 1.0]);
+        } else {
+          material.pbrMetallicRoughness.setBaseColorFactor([0.18, 0.82, 0.06, 1.0]);
+        }
+      }
+    });
+  </script>
+
+  <script>
+    // AJAX-submit the form so the user stays on the page and sees the thank-you state.
+    const form = document.getElementById('surveyForm');
+    const formWrap = document.getElementById('formWrap');
+    const thankYou = document.getElementById('thankYou');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const body = new URLSearchParams(formData).toString();
+
+      try {
+        const resp = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body
+        });
+        if (!resp.ok) throw new Error('Network response was not ok');
+        form.style.display = 'none';
+        thankYou.classList.add('active');
+        window.scrollTo({ top: formWrap.offsetTop - 80, behavior: 'smooth' });
+      } catch (err) {
+        alert('Something went wrong submitting the survey. Please try again. / Algo sali\u00f3 mal al enviar la encuesta. Por favor intenta de nuevo.');
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
